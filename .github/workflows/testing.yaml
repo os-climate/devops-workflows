@@ -17,7 +17,7 @@ jobs:
   ### EVALUATE TESTS REQUIRED ###
 
   evaluate:
-    name: "💭 Evaluate tests required"
+    name: "Evaluate tests required"
     # Only run before PR is merged
     if: github.event.pull_request.merged == false
     runs-on: ubuntu-latest
@@ -27,7 +27,7 @@ jobs:
       versions: ${{ steps.determine.outputs.versions }}
 
     steps:
-      - name: "🐍 Evaluate Python tests"
+      - name: "Evaluate Python tests"
         id: pytest
         run: |
           RESULT1=(**/test_*.py)
@@ -54,7 +54,7 @@ jobs:
   ### PERFORM TESTS ###
 
   pytest:
-    name: "🐍 Perform Python tests"
+    name: "Perform Python tests"
     runs-on: ubuntu-latest
     needs: [evaluate]
     if: needs.evaluate.outputs.pytest == 'true'
@@ -96,7 +96,7 @@ jobs:
           fi
 
   notebooks:
-    name: "🗒️ Test Jupyter Notebooks"
+    name: "Test Jupyter Notebooks"
     needs: [evaluate]
     runs-on: ubuntu-latest
     if: needs.evaluate.outputs.notebooks == 'true'
