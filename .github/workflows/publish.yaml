@@ -1,6 +1,6 @@
 ---
 # SPDX-License-Identifier: Apache-2.0
-# Copyright 2024 The Linux Foundation <matthew.watkins@linuxfoundation.org>
+# Copyright 2024 The Linux Foundation <mwatkins@linuxfoundation.org>
 
 name: "📦 Publish package"
 
@@ -12,9 +12,6 @@ on:
   # workflow_dispatch:
   push:
     # Only invoked on release tag pushes
-    branches:
-      - "main"
-      - "master"
     tags:
       - "v*.*.*"
 
