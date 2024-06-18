@@ -1,8 +1,8 @@
 ---
 # SPDX-License-Identifier: Apache-2.0
-# Copyright 2024 The Linux Foundation <matthew.watkins@linuxfoundation.org>
+# Copyright 2024 The Linux Foundation <mwatkins@linuxfoundation.org>
 
-name: "🧪 Python Tests (Matrix)"
+name: "Python Tests (Matrix)"
 
 # yamllint disable-line rule:truthy
 on:
@@ -24,7 +24,7 @@ jobs:
     outputs:
       pytest: ${{ steps.pytest.outputs.perform }}
       notebooks: ${{ steps.notebooks.outputs.perform }}
-      # versions: ${{ steps.determine.outputs.versions }}
+      versions: ${{ steps.determine.outputs.versions }}
 
     steps:
       - name: "Evaluate Python tests"
@@ -45,3 +45,8 @@ jobs:
             echo "Found Jupyter Notebook tests"
             echo "proceed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: "Determine Python matrix versions"
+        id: determine
+        # yamllint disable-line rule:line-length
+        uses: .github/actions/pyproject-extract-versions.yaml@main
